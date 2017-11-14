@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import { StackNavigator, SafeAreaView } from 'react-navigation';
 import {
   Platform,
   StyleSheet,
@@ -12,10 +13,12 @@ import {
   View
 } from 'react-native';
 import { Provider } from 'react-redux';
-import configureStore from './src/store/configureStore'
-import Main from './src/components/Main'
+import configureStore from './src/store/configureStore';
+import Main from './src/components/Main';
+import Login from './src/components/Login';
 
-const store = configureStore()
+
+const store = configureStore();
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -24,21 +27,27 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+
+const AppNavigator = StackNavigator(
+  {
+    Main: {
+      screen: Main,
+    },
+    Login: {
+      screen: Login,
+    },
+  },
+  {
+    initialRouteName: 'Main'
+  }
+);
+
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Main/>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     );
   }
 }
