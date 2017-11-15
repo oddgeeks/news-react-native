@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "998422386529",
+    "project_id": "newsfeed-db9b0"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998422386529:android:559252483c3c3110",
+        "android_client_info": {
+          "package_name": "com.newsfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998422386529-5br8s4m4c9cc5ijv2b8se54o77j5g4a0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newsfeed",
+            "certificate_hash": "6ae46f6fcf87091fb5f70d94845b250debda8570"
+          }
+        },
+        {
+          "client_id": "998422386529-540oijehau9spacqn461ns251b78uj51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdIAnk7f7YMA1aGGRLEHk47RTZq3njNZQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

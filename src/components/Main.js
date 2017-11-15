@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 export default class Main extends Component {
