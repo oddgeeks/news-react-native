@@ -7,11 +7,6 @@ import {
 } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
-GoogleSignin.configure({}).then(() => {
-  GoogleSignin.currentUserAsync().then((user) => {
-    console.log('USER', user);
-  }).done();
-});
 
 export default class Login extends Component {
   constructor(props) {
@@ -22,34 +17,18 @@ export default class Login extends Component {
     this.signIn = this.signIn.bind(this);
   }
   async signIn() {
-    console.log(this.state)
-    try {
-      await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
-      const value = await AsyncStorage.getAllKeys();
-      console.log('inside try')
-      console.log(value);
-    } catch (error) {
-      console.log(error)
-      // Error saving data
-    }
-    //     try {
-    //   const value = await AsyncStorage.getAllKeys();
-    //   if (value !== null){
-    //     // We have data!!
-    //     console.log(value);
-    //   }
-    // } catch (error) {
-    //   // Error retrieving data
-    // }
-    // GoogleSignin.signIn()
-    //   .then((user) => {
-    //     console.log(user);
-    //     this.setState({ user });
-    //   })
-    //   .catch((err) => {
-    //     console.log('WRONG SIGNIN', err);
-    //   })
-    //   .done();
+    await GoogleSignin.configure({}).then(() => {
+      GoogleSignin.signIn()
+        .then((user) => {
+          console.log(user);
+          this.setState({ user });
+          this.props.navigation.navigate('Main');
+        })
+        .catch((err) => {
+          console.log('WRONG SIGNIN', err);
+        })
+        .done();
+    }).done();
   }
 
   render() {

@@ -1,32 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import { StackNavigator, SafeAreaView } from 'react-navigation';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
-import configureStore from './src/store/configureStore';
-import Main from './src/components/Main';
-import Login from './src/components/Login';
+import { GoogleSignin } from 'react-native-google-signin';
+import configureStore from './store/configureStore';
+import Main from './components/Main';
+import Login from './components/Login';
+import InitialRoute from './components/InitialRoute';
 
 
 const store = configureStore();
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 
 const AppNavigator = StackNavigator(
   {
@@ -36,13 +18,24 @@ const AppNavigator = StackNavigator(
     Login: {
       screen: Login,
     },
+    InitialRoute: {
+      screen: InitialRoute
+    }
   },
   {
-    initialRouteName: 'Login'
+    initialRouteName: 'InitialRoute'
   }
 );
-
 export default class App extends Component {
+  componentWillMount() {
+    GoogleSignin.hasPlayServices({ autoResolve: true }).then(() => {
+      GoogleSignin.configure({}).then(() => {
+      }).done();
+    })
+      .catch((err) => {
+        console.log('Play services error', err.code, err.message);
+      });
+  }
   render() {
     return (
       <Provider store={store}>
