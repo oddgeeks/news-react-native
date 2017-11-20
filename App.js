@@ -38,7 +38,7 @@ const AppNavigator = StackNavigator(
     },
   },
   {
-    initialRouteName: 'Main'
+    initialRouteName: 'Login'
   }
 );
 
