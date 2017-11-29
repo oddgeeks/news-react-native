@@ -12,7 +12,11 @@ import { GoogleSignin } from 'react-native-google-signin';
 import { getSources } from '../actions/sources';
 
 
-class SourcesScreen extends Component {
+const ArticleScreen = () => (
+  <Text>Article screen</Text>
+);
+
+/* class ArticleScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,22 +25,21 @@ class SourcesScreen extends Component {
     this.signOut = this.signOut.bind(this);
   }
   componentWillMount() {
-    console.log(this.props);
+    console.log(this.props.navigation);
     console.log(this.props.navigation.state.key);
-    this.props.getSources(this.props.screenProps.source);
+    this.props.getSources(this.props.navigation.state.key);
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.screenProps.source !== nextProps.screenProps.source) {
+    if (this.props.navigation.state.key !== nextProps.navigation.state.key) {
       console.log(this.props.navigation);
-      console.log(nextProps.screenProps.source);
-      this.props.getSources(nextProps.screenProps.source);
+      console.log(nextProps.navigation.state.key);
+      this.props.getSources(nextProps.navigation.state.key);
     }
   }
 
 
   onSourcePressButton = (name) => {
-    console.log(name, 'inside source');
-    this.props.navigation.navigate('Article');
+    this.props.navigation.navigate('technology');
   }
 
   keyExtractor = item => item.id;
@@ -61,7 +64,7 @@ class SourcesScreen extends Component {
     return (
       <View style={{ backgroundColor: 'white' }}>
         <Text style={{ color: 'blue' }}>
-          {this.props.screenProps.source}
+          {this.props.navigation.state.routeName}
         </Text>
 
         <FlatList
@@ -88,4 +91,7 @@ const mapStateToProps = state => ({
   sources: state.sourceReducer.sources
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SourcesScreen);
+export default
+ connect(mapStateToProps, mapDispatchToProps)(SourcesScreen); */
+
+export default ArticleScreen;
