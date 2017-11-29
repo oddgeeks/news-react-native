@@ -1,5 +1,8 @@
 import keyMirror from 'keymirror';
 
 const actionTypes = keyMirror({
-  LOGIN: null,
+  GET_SOURCES_SUCCESS: null,
+  GET_SOURCES_FAILURE: null,
 });
+
+export default actionTypes;

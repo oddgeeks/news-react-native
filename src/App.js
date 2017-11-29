@@ -23,7 +23,7 @@ const AppNavigator = StackNavigator(
     }
   },
   {
-    initialRouteName: 'InitialRoute'
+    initialRouteName: 'Main'
   }
 );
 export default class App extends Component {
