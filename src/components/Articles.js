@@ -9,25 +9,23 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { GoogleSignin } from 'react-native-google-signin';
-import { getSources } from '../actions/sources';
+import { getArticles } from '../actions/articles';
 
 
-const ArticleScreen = () => (
-  <Text>Article screen</Text>
-);
-
-/* class ArticleScreen extends Component {
+// const ArticleScreen = () => (
+//   <Text>Article screen</Text>
+// );
+class ArticleScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null
     };
-    this.signOut = this.signOut.bind(this);
+    // this.signOut = this.signOut.bind(this);
   }
   componentWillMount() {
     console.log(this.props.navigation);
-    console.log(this.props.navigation.state.key);
-    this.props.getSources(this.props.navigation.state.key);
+    this.props.getArticles(this.props.navigation.state.params.source);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.navigation.state.key !== nextProps.navigation.state.key) {
@@ -38,60 +36,58 @@ const ArticleScreen = () => (
   }
 
 
-  onSourcePressButton = (name) => {
-    this.props.navigation.navigate('technology');
+  onArticlePressButton = (title) => {
+    console.log(title);
   }
 
-  keyExtractor = item => item.id;
+  keyExtractor = item => item.url;
 
-  async signOut() {
-    try {
-      await GoogleSignin.signOut();
-      console.log(this.state);
-      this.props.navigation.navigate('Login');
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  // async signOut() {
+  //   try {
+  //     await GoogleSignin.signOut();
+  //     console.log(this.state);
+  //     this.props.navigation.navigate('Login');
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
-  renderItem = ({ item }) => (
-    <TouchableHighlight onPress={() => this.onSourcePressButton(item.name)}>
-      <Text>{item.name}</Text>
-    </TouchableHighlight>
-  );
+   renderItem = ({ item }) => (
+     <TouchableHighlight onPress={() => this.onArticlePressButton(item.title)}>
+       <Text>{item.title}</Text>
+     </TouchableHighlight>
+   );
 
-  render() {
-    return (
-      <View style={{ backgroundColor: 'white' }}>
-        <Text style={{ color: 'blue' }}>
-          {this.props.navigation.state.routeName}
-        </Text>
+   render() {
+     return (
+       <View style={{ backgroundColor: 'white' }}>
+         <Text style={{ color: 'blue' }}>
+           {this.props.navigation.state.params.source}
+         </Text>
+         <FlatList
+           data={this.props.articles}
+           renderItem={this.renderItem}
+           keyExtractor={this.keyExtractor}
+         />
 
-        <FlatList
-          data={this.props.sources}
-          renderItem={this.renderItem}
-          keyExtractor={this.keyExtractor}
-        />
-
-        <Button
+         {/* <Button
           onPress={() => { this.signOut(); }}
           title="Sign Out"
-        />
-      </View>
-    );
-  }
+        /> */}
+       </View>
+     );
+   }
 }
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getSources
+  getArticles
 }, dispatch);
 
 const mapStateToProps = state => ({
-  sources: state.sourceReducer.sources
+  articles: state.articleReducer.articles
 });
 
 export default
- connect(mapStateToProps, mapDispatchToProps)(SourcesScreen); */
+connect(mapStateToProps, mapDispatchToProps)(ArticleScreen);
 
-export default ArticleScreen;

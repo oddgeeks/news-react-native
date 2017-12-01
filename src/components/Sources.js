@@ -36,7 +36,7 @@ class SourcesScreen extends Component {
 
   onSourcePressButton = (name) => {
     console.log(name, 'inside source');
-    this.props.navigation.navigate('Article');
+    this.props.navigation.navigate('Article', { source: name });
   }
 
   keyExtractor = item => item.id;
@@ -45,6 +45,7 @@ class SourcesScreen extends Component {
     try {
       await GoogleSignin.signOut();
       console.log(this.state);
+      console.log(this.props);
       this.props.navigation.navigate('Login');
     } catch (err) {
       console.log(err);

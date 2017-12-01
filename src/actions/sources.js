@@ -7,7 +7,7 @@ const getSourcesSuccess = sources => ({
   sources
 });
 const getSourcesFailure = () => ({
-  type: actionTypes.GET_SOURCES_FAILURE,
+  type: actionTypes.GET_SOURCES_SUCCESS,
 });
 
 const getSources = category => async (dispatch) => {

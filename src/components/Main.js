@@ -8,7 +8,8 @@ const CategoryScreenNavigator = StackNavigator({
     screen: SourcesScreen,
   },
   Article: {
-    screen: ArticlesScreen
+    screen: ArticlesScreen,
+    path: 'articles/:source'
   }
 }, {
   initialRouteName: 'Source'
@@ -58,7 +59,7 @@ const Main = DrawerNavigator(
     initialRouteName: 'technology',
     contentOptions: {
       activeTintColor: '#e91e63',
-    },
+    }
   }
 );
 
