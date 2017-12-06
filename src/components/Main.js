@@ -1,9 +1,10 @@
 import React from 'react';
 import { DrawerNavigator, StackNavigator } from 'react-navigation';
+import { Text } from 'react-native';
 import SourcesScreen from './Sources';
 import ArticlesScreen from './Articles';
 
-const CategoryScreenNavigator = StackNavigator({
+const CategoryScreen = StackNavigator({
   Source: {
     screen: SourcesScreen,
   },
@@ -14,11 +15,6 @@ const CategoryScreenNavigator = StackNavigator({
 }, {
   initialRouteName: 'Source'
 });
-
-
-const CategoryScreen = ({ navigation }) => (
-  <CategoryScreenNavigator screenProps={{ source: navigation.state.key }} />);
-
 
 const categoryRoutes = {
   business: {

@@ -1,31 +1,11 @@
 import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { GoogleSignin } from 'react-native-google-signin';
 import configureStore from './store/configureStore';
-import Main from './components/Main';
-import Login from './components/Login';
-import InitialRoute from './components/InitialRoute';
-
+import AppWithNavigationState from './navigators/AppNavigator';
 
 const store = configureStore();
 
-const AppNavigator = StackNavigator(
-  {
-    Main: {
-      screen: Main,
-    },
-    Login: {
-      screen: Login,
-    },
-    InitialRoute: {
-      screen: InitialRoute
-    }
-  },
-  {
-    initialRouteName: 'Main'
-  }
-);
 export default class App extends Component {
   componentWillMount() {
     GoogleSignin.hasPlayServices({ autoResolve: true }).then(() => {
@@ -39,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <AppWithNavigationState />
       </Provider>
     );
   }
@@ -63,3 +43,4 @@ export default class App extends Component {
 //     marginBottom: 5,
 //   },
 // });
+

@@ -6,7 +6,14 @@ import {
   View, AsyncStorage
 } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import { NavigationActions } from 'react-navigation';
 
+const resetActionMain = NavigationActions.reset({
+  index: 0,
+  actions: [
+    NavigationActions.navigate({ routeName: 'Main' })
+  ]
+});
 
 export default class Login extends Component {
   constructor(props) {
@@ -22,7 +29,8 @@ export default class Login extends Component {
         .then((user) => {
           console.log(user);
           this.setState({ user });
-          this.props.navigation.navigate('Main');
+          this.props.navigation.dispatch(resetActionMain);
+          console.log(this.props.navigation);
         })
         .catch((err) => {
           console.log('WRONG SIGNIN', err);

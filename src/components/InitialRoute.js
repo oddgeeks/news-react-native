@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
 import { GoogleSignin } from 'react-native-google-signin';
-import Main from './Main';
-import Login from './Login';
+import { Text } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 
+const resetActionLogin = NavigationActions.reset({
+  index: 0,
+  actions: [
+    NavigationActions.navigate({ routeName: 'Login' })
+  ]
+});
+const resetActionMain = NavigationActions.reset({
+  index: 0,
+  actions: [
+    NavigationActions.navigate({ routeName: 'Main' })
+  ]
+});
 
 export default class InitialRoute extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      loggedIn: false
-    };
-  }
   async componentWillMount() {
     try {
       await GoogleSignin.configure({});
       const user = await GoogleSignin.currentUserAsync();
       if (user) {
-        this.setState({ loggedIn: true });
-        this.setState({ loading: false });
+        this.props.navigation.dispatch(resetActionMain);
       } else {
-        this.setState({ loading: false });
+        this.props.navigation.dispatch(resetActionLogin);
       }
     } catch (err) {
-      this.setState({ loading: false });
+      this.props.navigation.dispatch(resetActionLogin);
     }
   }
   render() {
-    if (this.state.loading) {
-      return null;
-    }
     return (
-      this.state.loggedIn ? <Main navigation={this.props.navigation} /> : <Login navigation={this.props.navigation} />
+      <Text>loading</Text>
     );
   }
 }
