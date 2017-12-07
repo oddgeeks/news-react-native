@@ -11,14 +11,12 @@ class CustomDrawer extends Component {
   onItemPress = (name) => {
     const resetActionArticle = NavigationActions.reset({
       index: 0,
-      key: null,
       actions: [
-        NavigationActions.navigate({ routeName: 'Main' }),
+        NavigationActions.navigate({ routeName: 'Source' }),
       ],
     });
     this.props.navigation.dispatch(resetActionArticle);
     this.props.changeCurrrentCategory(name);
-
   }
   signOut= async () => {
     // const resetActionArticle = NavigationActions.reset({
@@ -29,20 +27,19 @@ class CustomDrawer extends Component {
     //   ],
     // });
     // this.props.navigation.dispatch(resetActionArticle);
-    this.props.navigation.navigate('technology');
-    // const resetActionLogin = NavigationActions.reset({
-    //   index: 0,
-    //   actions: [
-    //     NavigationActions.navigate({ routeName: 'Login' })
-    //   ],
-    //   key: null,
-    // });
-    // try {
-    //   await GoogleSignin.signOut();
-    //   this.props.navigation.dispatch(resetActionLogin);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    const resetActionLogin = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Login' })
+      ],
+      key: null,
+    });
+    try {
+      await GoogleSignin.signOut();
+      this.props.navigation.dispatch(resetActionLogin);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
 
