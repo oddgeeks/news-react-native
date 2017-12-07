@@ -1,8 +1,10 @@
 import React from 'react';
-import { DrawerNavigator, StackNavigator } from 'react-navigation';
-import { Text } from 'react-native';
+import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
+import { Text, View, ScrollView } from 'react-native';
 import SourcesScreen from './Sources';
 import ArticlesScreen from './Articles';
+import ArticleWebView from './ArticleWebView';
+import CustomDrawer from './Drawer';
 
 const CategoryScreen = StackNavigator({
   Source: {
@@ -11,6 +13,10 @@ const CategoryScreen = StackNavigator({
   Article: {
     screen: ArticlesScreen,
     path: 'articles/:source'
+  },
+  ArticleWebView: {
+    screen: ArticleWebView,
+    path: 'articles/:articleUrl'
   }
 }, {
   initialRouteName: 'Source'
@@ -43,7 +49,7 @@ const categoryRoutes = {
   },
   technology: {
     screen: CategoryScreen
-  }
+  },
 };
 
 
@@ -55,7 +61,8 @@ const Main = DrawerNavigator(
     initialRouteName: 'technology',
     contentOptions: {
       activeTintColor: '#e91e63',
-    }
+    },
+    contentComponent: CustomDrawer
   }
 );
 

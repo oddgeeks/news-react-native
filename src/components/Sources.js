@@ -62,8 +62,6 @@ class SourcesScreen extends Component {
   async signOut() {
     try {
       await GoogleSignin.signOut();
-      console.log(this.state);
-      console.log(this.props);
       this.props.navigation.dispatch(resetActionLogin);
     } catch (err) {
       console.log(err);
@@ -82,16 +80,10 @@ class SourcesScreen extends Component {
         <Text style={{ color: 'blue' }}>
           {this.props.category}
         </Text>
-
         <FlatList
           data={this.props.sources}
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
-        />
-
-        <Button
-          onPress={() => { this.signOut(); }}
-          title="Sign Out"
         />
       </View>
     );

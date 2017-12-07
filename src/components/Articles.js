@@ -36,8 +36,8 @@ class ArticleScreen extends Component {
   }
 
 
-  onArticlePressButton = (title) => {
-    console.log(title);
+  onArticlePressButton = (url) => {
+    this.props.navigation.navigate('ArticleWebView', { articleUrl: url });
   }
 
   keyExtractor = item => item.url;
@@ -53,7 +53,7 @@ class ArticleScreen extends Component {
   // }
 
    renderItem = ({ item }) => (
-     <TouchableHighlight onPress={() => this.onArticlePressButton(item.title)}>
+     <TouchableHighlight onPress={() => this.onArticlePressButton(item.url)}>
        <Text>{item.title}</Text>
      </TouchableHighlight>
    );
