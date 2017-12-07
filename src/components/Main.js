@@ -22,46 +22,44 @@ const CategoryScreen = StackNavigator({
   initialRouteName: 'Source'
 });
 
-const categoryRoutes = {
-  business: {
-    screen: CategoryScreen,
-  },
-  entertainment: {
-    screen: CategoryScreen
-  },
-  general: {
-    screen: CategoryScreen
-  },
-  'health-and-medical': {
-    screen: CategoryScreen
-  },
-  music: {
-    screen: CategoryScreen
-  },
-  politics: {
-    screen: CategoryScreen
-  },
-  'science-and-nature': {
-    screen: CategoryScreen
-  },
-  sport: {
-    screen: CategoryScreen
-  },
-  technology: {
-    screen: CategoryScreen
-  },
-};
+// const categoryRoutes = {
+//   CategoryScreen: {
+//     screen: CategoryScreen,
+//   },
+//   entertainment: {
+//     screen: CategoryScreen
+//   },
+//   general: {
+//     screen: CategoryScreen
+//   },
+//   'health-and-medical': {
+//     screen: CategoryScreen
+//   },
+//   music: {
+//     screen: CategoryScreen
+//   },
+//   politics: {
+//     screen: CategoryScreen
+//   },
+//   'science-and-nature': {
+//     screen: CategoryScreen
+//   },
+//   sport: {
+//     screen: CategoryScreen
+//   },
+//   technology: {
+//     screen: CategoryScreen
+//   },
+// };
 
 
 const Main = DrawerNavigator(
   {
-    ...categoryRoutes
+    CategoryScreen: {
+      screen: CategoryScreen,
+    }
   },
   {
-    initialRouteName: 'technology',
-    contentOptions: {
-      activeTintColor: '#e91e63',
-    },
     contentComponent: CustomDrawer
   }
 );

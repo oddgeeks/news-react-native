@@ -45,15 +45,15 @@ class SourcesScreen extends Component {
 
   onSourcePressButton = (name) => {
     console.log(name, 'inside source');
-    const resetActionArticle = NavigationActions.reset({
-      index: 0,
-      key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: 'Main' }),
-      ],
-    });
-    this.props.navigation.dispatch(resetActionArticle);
-    this.props.navigation.navigate(this.props.category);
+    // const resetActionArticle = NavigationActions.reset({
+    //   index: 0,
+    //   key: null,
+    //   actions: [
+    //     NavigationActions.navigate({ routeName: 'Main' }),
+    //   ],
+    // });
+    // this.props.navigation.dispatch(resetActionArticle);
+    // this.props.navigation.navigate(this.props.category);
     this.props.navigation.navigate('Article', { source: name });
   }
 
