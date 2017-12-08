@@ -4,7 +4,7 @@ import { GoogleSignin } from 'react-native-google-signin';
 import { Text, View, StatusBar } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { Spinner } from 'native-base';
-import styles from './InitialRoute.style';
+import styles from './InitialRouteStyle';
 
 const resetActionLogin = NavigationActions.reset({
   index: 0,
@@ -20,22 +20,28 @@ const resetActionMain = NavigationActions.reset({
 });
 
 export default class InitialRoute extends Component {
-  // async componentWillMount() {
-  //   try {
-  //     await GoogleSignin.configure({});
-  //     const user = await GoogleSignin.currentUserAsync();
-  //     if (user) {
-  //       this.props.navigation.dispatch(resetActionMain);
-  //     } else {
-  //       this.props.navigation.dispatch(resetActionLogin);
-  //     }
-  //   } catch (err) {
-  //     this.props.navigation.dispatch(resetActionLogin);
-  //   }
-  // }
   static navigationOptions = () => ({
     header: null
   });
+  async componentWillMount() {
+    try {
+      await GoogleSignin.configure({});
+      const user = await GoogleSignin.currentUserAsync();
+      if (user) {
+        setTimeout(() => {
+          this.props.navigation.dispatch(resetActionMain);
+        }, 5000);
+      } else {
+        setTimeout(() => {
+          this.props.navigation.dispatch(resetActionLogin);
+        }, 5000);
+      }
+    } catch (err) {
+      setTimeout(() => {
+        this.props.navigation.dispatch(resetActionLogin);
+      }, 5000);
+    }
+  }
   render() {
     return (
       <View style={styles.background}>
@@ -44,7 +50,9 @@ export default class InitialRoute extends Component {
           barStyle="light-content"
         />
         <Text style={styles.text}>Newsify</Text>
-        <Spinner color="white" />
+        <View style={styles.spinner}>
+          <Spinner color="white" />
+        </View>
       </View>
     );
   }

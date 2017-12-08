@@ -14,8 +14,19 @@ const styles = StyleSheet.create({
     marginTop: '50%',
     color: 'white',
     fontSize: 50,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'serif',
+    fontStyle: 'italic',
+    textShadowRadius: 5,
+    textShadowOffset: {
+      width: 2,
+      height: 2
+    },
+    textShadowColor: 'black'
   },
+  spinner: {
+    marginTop: '5%'
+  }
 });
 
 

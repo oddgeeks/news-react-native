@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
-  Text,
-  View, AsyncStorage
+  View, AsyncStorage, TouchableHighlight, Text, StatusBar
 } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import style from './LoginStyles';
+
 import { NavigationActions } from 'react-navigation';
 
 const resetActionMain = NavigationActions.reset({
@@ -16,6 +17,10 @@ const resetActionMain = NavigationActions.reset({
 });
 
 export default class Login extends Component {
+  static navigationOptions = () => ({
+    header: null
+  });
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +28,7 @@ export default class Login extends Component {
     };
     this.signIn = this.signIn.bind(this);
   }
+
   async signIn() {
     await GoogleSignin.configure({}).then(() => {
       GoogleSignin.signIn()
@@ -41,11 +47,29 @@ export default class Login extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: 'yellow' }}>
-        <Text>
-          Login
-        </Text>
-        <GoogleSigninButton style={{ width: 120, height: 44 }} onPress={() => { this.signIn(); }} />
+      <View style={{ flex: 1, backgroundColor: '#00838f' }}>
+        <StatusBar
+          backgroundColor="#005662"
+          barStyle="light-content"
+        />
+        <View style={{ flex: 1 }} >
+          <Text style={style.header}>Newsify</Text>
+          <Text style={style.text}>View News Headlines from over 200 sources</Text>
+          <Text style={[style.text, { marginTop: '1%' }]}>Stay upto date with World events and happenings</Text>
+        </View>
+        <View style={{
+          flex: 1, alignItems: 'center'
+        }}
+        >
+          <View style={{ marginTop: '20%' }}>
+            <GoogleSigninButton
+              style={{ width: 200, height: 48 }}
+              size={GoogleSigninButton.Size.Wide}
+              onPress={() => { this.signIn(); }}
+              color={GoogleSigninButton.Color.Light}
+            />
+          </View>
+        </View>
       </View>
     );
   }
