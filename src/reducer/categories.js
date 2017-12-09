@@ -1,9 +1,5 @@
 import actionTypes from '../constants/actionTypes';
 
-// const categories = ['technology', 'business', 'entertainment',
-//  'gaming', 'general', 'health-and-medical', 'music', 
-//  'politics', 'science-and-nature', 'sport', 'technology'];
-
 const categories = [
   { value: 'technology', name: 'Technology' },
   { value: 'business', name: 'Business' },

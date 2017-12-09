@@ -1,6 +1,5 @@
 import React from 'react';
-import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
-import { Text, View, ScrollView } from 'react-native';
+import { DrawerNavigator, StackNavigator, } from 'react-navigation';
 import SourcesScreen from './Sources';
 import ArticlesScreen from './Articles';
 import ArticleWebView from './ArticleWebView';
@@ -20,45 +19,14 @@ const CategoryScreen = StackNavigator({
     path: 'articles/:articleUrl'
   }
 }, {
-  initialRouteName: 'Article',
-  initialRouteParams:
-     { source: 'Politico'},
+  initialRouteName: 'Source',
+  initialRouteParams: {
+    category: { value: 'technology', name: 'Technology' }
+  },
   navigationOptions: {
     header: <Header />
   }
-
 });
-
-// const categoryRoutes = {
-//   CategoryScreen: {
-//     screen: CategoryScreen,
-//   },
-//   entertainment: {
-//     screen: CategoryScreen
-//   },
-//   general: {
-//     screen: CategoryScreen
-//   },
-//   'health-and-medical': {
-//     screen: CategoryScreen
-//   },
-//   music: {
-//     screen: CategoryScreen
-//   },
-//   politics: {
-//     screen: CategoryScreen
-//   },
-//   'science-and-nature': {
-//     screen: CategoryScreen
-//   },
-//   sport: {
-//     screen: CategoryScreen
-//   },
-//   technology: {
-//     screen: CategoryScreen
-//   },
-// };
-
 
 const Main = DrawerNavigator(
   {

@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Button,
-  FlatList,
-  TouchableHighlight
-} from 'react-native';
+import { View, FlatList } from 'react-native';
 import { bindActionCreators } from 'redux';
-import { Container, Content, List, ListItem, Thumbnail, Body, Text } from 'native-base';
+import { ListItem, Thumbnail, Body, Text } from 'native-base';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getArticles } from '../actions/articles';
 import Header from './Header';
-
 
 class ArticleScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -28,26 +23,15 @@ class ArticleScreen extends Component {
   keyExtractor = item => item.url;
 
    renderItem = ({ item }) => (
-     <ListItem
-       onPress={() => this.onArticlePressButton(item.url, item.title)}
-     >
+     <ListItem onPress={() => this.onArticlePressButton(item.url, item.title)}>
        <Thumbnail
          square
-         style={{
-          width: 90,
-          height: 90,
-       }}
+         style={{ width: 90, height: 90, }}
          source={{ uri: item.urlToImage }}
        />
-       <Body
-         style={{
-          marginLeft: 5,
-         }}
-       >
-         <Text style={{
-          color: 'black',
-         }}
-         >{item.title}
+       <Body style={{ marginLeft: 5 }}>
+         <Text style={{ color: 'black' }}>
+           {item.title}
          </Text>
          <Text note>{item.description}
          </Text>
@@ -77,6 +61,18 @@ const mapStateToProps = state => ({
   articles: state.articleReducer.articles
 });
 
-export default
-connect(mapStateToProps, mapDispatchToProps)(ArticleScreen);
+ArticleScreen.propTypes = {
+  getArticles: PropTypes.func.isRequired,
+  articles: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        source: PropTypes.string
+      })
+    }).isRequired
+  }).isRequired
+
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleScreen);
 

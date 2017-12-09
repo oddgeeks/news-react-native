@@ -1,44 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import { NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 
-class AppHeader extends Component {
-  constructor(props) {
-    super(props);
-  }
-  test = () => {
-
-  }
-  render() {
-    console.log(this.props);
-    return (
-      <Header androidStatusBarColor="#005662" style={{ backgroundColor: '#00838f' }}>
-        <Left>
-          {this.props.routeName === 'Source' ?
+const AppHeader = ({
+  openDrawer, goBack, title, routeName
+}) => (
+  <Header androidStatusBarColor="#005662" style={{ backgroundColor: '#00838f' }}>
+    <Left>
+      {
+        routeName === 'Source' ?
           (
-            <Button onPress={this.props.openDrawer} transparent>
+            <Button onPress={openDrawer} transparent>
               <Icon name="menu" />
             </Button>
           ) : (
-            <Button transparent onPress={this.props.goBack}>
+            <Button transparent onPress={goBack}>
               <Icon name="arrow-back" />
-            </Button>)
-          }
-        </Left>
-        <Body>
-          <Title>{this.props.title}</Title>
-        </Body>
-        <Right>
-          <Button transparent onPress={this.props.goBack}>
-            <Icon name="search" />
-          </Button>
-        </Right>
-      </Header>
-    );
-  }
-}
+            </Button>
+          )
+      }
+    </Left>
+    <Body>
+      <Title>{title}</Title>
+    </Body>
+    <Right>
+      <Button transparent onPress={() => console.log('coming soon')}>
+        <Icon name="search" />
+      </Button>
+    </Right>
+  </Header>
+);
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   openDrawer: () => NavigationActions.navigate({ routeName: 'DrawerOpen' }),
@@ -50,5 +44,15 @@ const mapStateToProps = state => ({
   sources: state.sourceReducer.sources,
 });
 
+AppHeader.defaultProps = {
+  routeName: undefined
+};
+
+AppHeader.propTypes = {
+  openDrawer: PropTypes.func.isRequired,
+  goBack: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  routeName: PropTypes.string
+};
 export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
 

@@ -4,9 +4,9 @@ import { Text, View, ScrollView, FlatList } from 'react-native';
 import { GoogleSignin } from 'react-native-google-signin';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import { Icon } from 'native-base';
-import changeCurrrentCategory from './../actions/categories';
+import changeCurrentCategory from './../actions/categories';
 import DrawerItem from './DrawerItem';
 import styles from './DrawerStyles';
 
@@ -20,7 +20,7 @@ class CustomDrawer extends Component {
       ],
     });
     this.props.navigation.dispatch(resetActionArticle);
-    this.props.changeCurrrentCategory(category);
+    this.props.changeCurrentCategory(category);
   }
   signOut = async () => {
     const resetActionLogin = NavigationActions.reset({
@@ -41,8 +41,7 @@ class CustomDrawer extends Component {
   keyExtractor = item => item.value;
 
   renderItem = ({ item }) => (
-    <DrawerItem onPress={() => this.onItemPress(item)} name={item.name} iconName="paper" />
-  );
+    <DrawerItem onPress={() => this.onItemPress(item)} name={item.name} iconName="paper" />)
   render() {
     return (
       <View >
@@ -55,7 +54,7 @@ class CustomDrawer extends Component {
             <Text
               style={styles.personName}
             >
-              Oluwagbenga Joloko
+              {this.props.user.name}
             </Text>
           </View>
           <Text
@@ -83,7 +82,7 @@ class CustomDrawer extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changeCurrrentCategory
+  changeCurrentCategory
 }, dispatch);
 
 const mapStateToProps = state => ({
@@ -91,4 +90,14 @@ const mapStateToProps = state => ({
   categories: state.categoryReducer.categories
 });
 
+CustomDrawer.propTypes = {
+  navigation: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired,
+  }).isRequired,
+  changeCurrentCategory: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
 export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);

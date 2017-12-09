@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableNativeFeedback } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { Icon } from 'native-base';
+import PropTypes from 'prop-types';
 import styles from './DrawerItemStyle';
 
 const DrawerItem = props =>
@@ -27,4 +28,14 @@ const DrawerItem = props =>
       </View>
     </TouchableNativeFeedback>
   );
+DrawerItem.defaultProps = {
+  fontAwesome: false
+};
+
+DrawerItem.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  iconName: PropTypes.string.isRequired,
+  fontAwesome: PropTypes.bool,
+  name: PropTypes.string.isRequired
+};
 export default DrawerItem;

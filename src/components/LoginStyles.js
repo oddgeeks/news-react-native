@@ -1,11 +1,20 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-const colors = {
-  primary: '#00838f',
-  secondary: '#ff6f00'
-};
+// const colors = {
+//   primary: '#00838f',
+//   secondary: '#ff6f00'
+// };
 
 const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    backgroundColor: '#00838f'
+  },
+  signInView: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: '35%',
+  },
   background: {
     backgroundColor: '#00838f',
     flex: 1
@@ -39,9 +48,7 @@ const styles = StyleSheet.create({
       height: 1
     },
     textShadowColor: 'grey'
-
   }
 });
-
 
 export default styles;

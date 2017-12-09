@@ -10,6 +10,7 @@
 		"axios": "^0.17.1",
 		"keymirror": "^0.1.1",
 		"native-base": "^2.3.4",
+		"prop-types": "^15.6.0",
 		"react": "16.0.0",
 		"react-native": "0.50.3",
 		"react-native-google-signin": "^0.12.0",

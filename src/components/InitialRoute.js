@@ -6,6 +6,7 @@ import { NavigationActions } from 'react-navigation';
 import { Spinner } from 'native-base';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './InitialRouteStyle';
 import setCurrentUser from './../actions/auth';
 
@@ -66,6 +67,13 @@ class InitialRoute extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators({
   setCurrentUser
 }, dispatch);
+
+InitialRoute.propTypes = {
+  setCurrentUser: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired
+  }).isRequired
+};
 
 
 export default connect(undefined, mapDispatchToProps)(InitialRoute);

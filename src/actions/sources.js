@@ -13,10 +13,8 @@ const getSourcesFailure = () => ({
 const getSources = category => async (dispatch) => {
   try {
     const res = await axios.get(`https://newsapi.org/v2/sources?apiKey=213327409d384371851777e7c7f78dfe&category=${category}`);
-    console.log(res);
     dispatch(getSourcesSuccess(res.data.sources));
   } catch (err) {
-    console.log(err);
     dispatch(getSourcesFailure());
   }
 };
