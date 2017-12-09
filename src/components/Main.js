@@ -20,7 +20,9 @@ const CategoryScreen = StackNavigator({
     path: 'articles/:articleUrl'
   }
 }, {
-  initialRouteName: 'Source',
+  initialRouteName: 'Article',
+  initialRouteParams:
+     { source: 'Politico'},
   navigationOptions: {
     header: <Header />
   }

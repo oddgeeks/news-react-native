@@ -12,6 +12,7 @@ class AppHeader extends Component {
 
   }
   render() {
+    console.log(this.props);
     return (
       <Header androidStatusBarColor="#005662" style={{ backgroundColor: '#00838f' }}>
         <Left>
@@ -27,7 +28,7 @@ class AppHeader extends Component {
           }
         </Left>
         <Body>
-          <Title>Header</Title>
+          <Title>{this.props.title}</Title>
         </Body>
         <Right>
           <Button transparent onPress={this.props.goBack}>

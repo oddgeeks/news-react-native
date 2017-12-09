@@ -14,7 +14,7 @@ const categories = [
   { value: 'music', name: 'Music' },
   { value: 'politics', name: 'Politics' },
   { value: 'science-and-nature', name: 'Science and Nature' },
-  { value: 'sports', name: 'Sports' }
+  { value: 'sport', name: 'Sports' }
 ];
 
 

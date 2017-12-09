@@ -12,15 +12,15 @@ import styles from './DrawerStyles';
 
 
 class CustomDrawer extends Component {
-  onItemPress = (name) => {
+  onItemPress = (category) => {
     const resetActionArticle = NavigationActions.reset({
       index: 0,
       actions: [
-        NavigationActions.navigate({ routeName: 'Source' }),
+        NavigationActions.navigate({ routeName: 'Source', params: { category } }),
       ],
     });
     this.props.navigation.dispatch(resetActionArticle);
-    this.props.changeCurrrentCategory(name);
+    this.props.changeCurrrentCategory(category);
   }
   signOut = async () => {
     const resetActionLogin = NavigationActions.reset({
