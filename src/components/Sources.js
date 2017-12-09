@@ -25,7 +25,6 @@ class SourcesScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: <Header routeName="Source" title={navigation.state.params.category.name} />
   });
-  
   componentWillMount() {
     this.props.getSources(this.props.category.value);
   }

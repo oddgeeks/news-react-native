@@ -5,7 +5,7 @@ import { NavigationActions } from 'react-navigation';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './LoginStyles';
+import styles from './styles/LoginStyles';
 import setCurrentUser from './../actions/auth';
 
 const resetActionMain = NavigationActions.reset({

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   mainView: {
-    height: 36,
+    height: 40,
     paddingLeft: 20,
     backgroundColor: 'white',
     flexDirection: 'row'

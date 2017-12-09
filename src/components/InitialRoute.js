@@ -7,7 +7,7 @@ import { Spinner } from 'native-base';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './InitialRouteStyle';
+import styles from './styles/InitialRouteStyle';
 import setCurrentUser from './../actions/auth';
 
 const resetActionLogin = NavigationActions.reset({

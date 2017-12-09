@@ -8,10 +8,16 @@ import PropTypes from 'prop-types';
 import { Icon } from 'native-base';
 import changeCurrentCategory from './../actions/categories';
 import DrawerItem from './DrawerItem';
-import styles from './DrawerStyles';
+import styles from './styles/DrawerStyles';
 
 
 class CustomDrawer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: props.category.name
+    };
+  }
   onItemPress = (category) => {
     const resetActionArticle = NavigationActions.reset({
       index: 0,
@@ -19,6 +25,7 @@ class CustomDrawer extends Component {
         NavigationActions.navigate({ routeName: 'Source', params: { category } }),
       ],
     });
+    this.setState({ selected: category.name });
     this.props.navigation.dispatch(resetActionArticle);
     this.props.changeCurrentCategory(category);
   }
@@ -41,7 +48,13 @@ class CustomDrawer extends Component {
   keyExtractor = item => item.value;
 
   renderItem = ({ item }) => (
-    <DrawerItem onPress={() => this.onItemPress(item)} name={item.name} iconName="paper" />)
+    <DrawerItem
+      onPress={() => this.onItemPress(item)}
+      name={item.name}
+      iconName="paper"
+      selected={this.state.selected === item.name}
+    />
+  );
   render() {
     return (
       <View >
@@ -59,12 +72,13 @@ class CustomDrawer extends Component {
           </View>
           <Text
             style={styles.category}
-          >CATEGORY
+          >CATEGORIES
           </Text>
           <FlatList
             data={this.props.categories}
             renderItem={this.renderItem}
             keyExtractor={this.keyExtractor}
+            extraData={this.state}
           />
           <View
             style={styles.line}
@@ -87,7 +101,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 const mapStateToProps = state => ({
   user: state.authReducer.user,
-  categories: state.categoryReducer.categories
+  categories: state.categoryReducer.categories,
+  category: state.categoryReducer.currentCategory
 });
 
 CustomDrawer.propTypes = {
@@ -98,6 +113,9 @@ CustomDrawer.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired
   }).isRequired,
-  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);
