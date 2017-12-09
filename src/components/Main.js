@@ -5,6 +5,7 @@ import SourcesScreen from './Sources';
 import ArticlesScreen from './Articles';
 import ArticleWebView from './ArticleWebView';
 import CustomDrawer from './Drawer';
+import Header from './Header';
 
 const CategoryScreen = StackNavigator({
   Source: {
@@ -19,7 +20,11 @@ const CategoryScreen = StackNavigator({
     path: 'articles/:articleUrl'
   }
 }, {
-  initialRouteName: 'Source'
+  initialRouteName: 'Source',
+  navigationOptions: {
+    header: <Header />
+  }
+
 });
 
 // const categoryRoutes = {

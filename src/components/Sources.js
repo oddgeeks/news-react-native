@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { GoogleSignin } from 'react-native-google-signin';
 import { getSources } from '../actions/sources';
+import Header from './Header';
 
 const resetActionLogin = NavigationActions.reset({
   index: 0,
@@ -22,6 +23,9 @@ const resetActionLogin = NavigationActions.reset({
 
 
 class SourcesScreen extends Component {
+  static navigationOptions = () => ({
+    header: <Header routeName="Source" />
+  });
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +36,7 @@ class SourcesScreen extends Component {
   componentWillMount() {
     console.log(this.props);
     console.log(this.props.navigation.state.key);
-    this.props.getSources(this.props.category);
+    this.props.getSources(this.props.category.value);
   }
   // componentWillReceiveProps(nextProps) {
   //   if (this.props.screenProps.source !== nextProps.screenProps.source) {
@@ -78,7 +82,7 @@ class SourcesScreen extends Component {
     return (
       <View style={{ backgroundColor: 'white' }}>
         <Text style={{ color: 'blue' }}>
-          {this.props.category}
+          {this.props.category.name}
         </Text>
         <FlatList
           data={this.props.sources}

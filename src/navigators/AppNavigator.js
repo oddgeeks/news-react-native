@@ -7,17 +7,24 @@ import Login from '../components/Login';
 import InitialRoute from '../components/InitialRoute';
 
 
-export const AppNavigator = StackNavigator({
-  Main: {
-    screen: Main,
+export const AppNavigator = StackNavigator(
+  {
+    Main: {
+      screen: Main,
+    },
+    Login: {
+      screen: Login,
+    },
+    InitialRoute: {
+      screen: InitialRoute
+    }
   },
-  Login: {
-    screen: Login,
-  },
-  InitialRoute: {
-    screen: InitialRoute
+  {
+    navigationOptions: {
+      header: null
+    }
   }
-});
+);
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
   <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />

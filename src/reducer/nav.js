@@ -2,6 +2,7 @@ import { NavigationActions } from 'react-navigation';
 
 import { AppNavigator } from '../navigators/AppNavigator';
 
+// let initialNavState = AppNavigator.router.getStateForAction(NavigationActions.init());
 const firstAction = AppNavigator.router.getActionForPathAndParams('InitialRoute');
 const initialNavState = AppNavigator.router.getStateForAction(firstAction);
 
@@ -24,7 +25,6 @@ const navReducer = (state = initialNavState, action) => {
       nextState = AppNavigator.router.getStateForAction(action, state);
       break;
   }
-
   // Simply return the original `state` if `nextState` is null or undefined.
   return nextState || state;
 };

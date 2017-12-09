@@ -1,23 +1,15 @@
-const auth = (state = {}, action) => {
-  switch (action.type) {
-    // case 'ADD_TODO':
-    //   return [
-    //     ...state,
-    //     {
-    //       id: action.id,
-    //       text: action.text,
-    //       completed: false
-    //     }
-    //   ]
-    // case 'TOGGLE_TODO':
-    //   return state.map(todo =>
-    //     (todo.id === action.id) 
-    //       ? {...todo, completed: !todo.completed}
-    //       : todo
-    //   )
-    default:
-      return state
-  }
-}
+import actionTypes from './../constants/actionTypes';
 
-export default auth
+const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case actionTypes.SET_CURRENT_USER:
+      return {
+        ...state,
+        user: action.user
+      };
+    default:
+      return state;
+  }
+};
+
+export default authReducer;
