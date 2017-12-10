@@ -2,6 +2,7 @@
 > View News Headlines from over 200 sources.
 
 [![NPM Version][npm-image]][npm-url]
+[![Maintainability](https://api.codeclimate.com/v1/badges/18202ee92e95c0c751b9/maintainability)](https://codeclimate.com/github/andela-ojoloko/React-Native-Newsfeed/maintainability)
 
 This is a news feed react native application that enables you view News Headlines from over 200 sources. It consumes the [News API](https://newsapi.org)
 
