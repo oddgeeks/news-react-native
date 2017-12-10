@@ -5,7 +5,7 @@
 
 This is a news feed react native application that enables you view News Headlines from over 200 sources. It consumes the [News API](https://newsapi.org)
 
-![](header.png)
+![News Feed](https://media.giphy.com/media/xUOxfoqMyP7cCWykCI/giphy.gif)
 
 ## Built With
 
@@ -18,42 +18,40 @@ for building cross-platform UI components.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Follow the instruction [here](https://facebook.github.io/react-native/docs/getting-started.html) to setup your react Native development Environment for your Develeopment OS and Target OS.
 
-- ensure you have **NodeJS** installed. You may visit [this link](https://nodejs.org/en/download/) for complete 
-instructions on installing NodeJS on your computer.
-
-- 
-```
-Give examples
-```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+- **Open a terminal/command prompt** on your computer and `cd` into your preferred path/location.
 
-```
-Give the example
-```
+- **Clone this repo**: Enter this command in the terminal:
 
-And repeat
-
-```
-until finished
+``` bash
+git clone  https://github.com/andela-ojoloko/React-Native-Newsfeed.git
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+- **Install dependencies** : Do so by running the following command:
 
+``` bash
+npm install
+```
+
+- **Run the project**: This will run the project on your Android Emulator:
+
+``` bash
+react-native run-android
+```
 
 ## Contributing
 
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
+1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)

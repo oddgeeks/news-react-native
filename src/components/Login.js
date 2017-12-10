@@ -12,7 +12,8 @@ const resetActionMain = NavigationActions.reset({
   index: 0,
   actions: [
     NavigationActions.navigate({ routeName: 'Main' })
-  ]
+  ],
+  key: null
 });
 
 class Login extends Component {
