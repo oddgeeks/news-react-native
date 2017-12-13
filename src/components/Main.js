@@ -5,6 +5,7 @@ import ArticlesScreen from './Articles';
 import ArticleWebView from './ArticleWebView';
 import CustomDrawer from './Drawer';
 import Header from './Header';
+import ArticleSearchScreen from './ArticleSearch';
 
 const CategoryScreen = StackNavigator({
   Source: {
@@ -17,6 +18,9 @@ const CategoryScreen = StackNavigator({
   ArticleWebView: {
     screen: ArticleWebView,
     path: 'articles/:articleUrl'
+  },
+  ArticleSearchScreen: {
+    screen: ArticleSearchScreen
   }
 }, {
   initialRouteName: 'Source',
@@ -24,7 +28,7 @@ const CategoryScreen = StackNavigator({
     category: { value: 'technology', name: 'Technology' }
   },
   navigationOptions: {
-    header: <Header />
+    header: null
   }
 });
 

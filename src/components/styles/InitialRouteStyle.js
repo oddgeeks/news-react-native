@@ -24,9 +24,6 @@ const styles = StyleSheet.create({
     },
     textShadowColor: 'black'
   },
-  spinner: {
-    marginTop: '5%'
-  }
 });
 
 

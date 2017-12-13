@@ -1,14 +1,13 @@
-
 import React, { Component } from 'react';
 import { GoogleSignin } from 'react-native-google-signin';
 import { Text, View, StatusBar } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { Spinner } from 'native-base';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles/InitialRouteStyle';
 import setCurrentUser from './../actions/auth';
+import Loader from './Loader';
 
 const resetActionLogin = NavigationActions.reset({
   index: 0,
@@ -56,9 +55,7 @@ class InitialRoute extends Component {
           barStyle="light-content"
         />
         <Text style={styles.text}>Newsify</Text>
-        <View style={styles.spinner}>
-          <Spinner color="white" />
-        </View>
+        <Loader color="white" marginTop="5%" />
       </View>
     );
   }

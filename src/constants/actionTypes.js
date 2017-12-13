@@ -7,6 +7,8 @@ const actionTypes = keyMirror({
   GET_ARTICLES_SUCCESS: null,
   CHANGE_CATEGORY: null,
   SET_CURRENT_USER: null,
+  BEGIN_AJAX_CALL: null,
+  RESET_ERROR_MESSAGE: null,
 });
 
 export default actionTypes;

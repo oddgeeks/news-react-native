@@ -5,7 +5,9 @@ import { ListItem, Thumbnail, Body, Text } from 'native-base';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getArticles } from '../actions/articles';
+import { resetErrorMessage } from '../actions/ajaxCallStatus';
 import Header from './Header';
+import Loader from './Loader';
 
 class ArticleScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -14,6 +16,10 @@ class ArticleScreen extends Component {
 
   componentWillMount() {
     this.props.getArticles(this.props.navigation.state.params.source);
+  }
+
+  componentWillUnmount() {
+    this.props.resetErrorMessage();
   }
 
   onArticlePressButton = (url, title) => {
@@ -40,13 +46,20 @@ class ArticleScreen extends Component {
    );
 
    render() {
+     if (this.props.isLoading) {
+       return <Loader />;
+     }
      return (
        <View style={{ backgroundColor: 'white', flex: 1 }}>
-         <FlatList
-           data={this.props.articles}
-           renderItem={this.renderItem}
-           keyExtractor={this.keyExtractor}
-         />
+         { this.props.errorMessage ?
+           <Text>{this.props.errorMessage}</Text>
+         :
+           <FlatList
+             data={this.props.articles}
+             renderItem={this.renderItem}
+             keyExtractor={this.keyExtractor}
+           />
+         }
        </View>
      );
    }
@@ -54,11 +67,14 @@ class ArticleScreen extends Component {
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getArticles
+  getArticles,
+  resetErrorMessage
 }, dispatch);
 
 const mapStateToProps = state => ({
-  articles: state.articleReducer.articles
+  articles: state.articleReducer.articles,
+  errorMessage: state.ajaxCallStatus.message,
+  isLoading: state.ajaxCallStatus.loading
 });
 
 ArticleScreen.propTypes = {

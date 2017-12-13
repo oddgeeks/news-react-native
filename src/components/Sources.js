@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import {
-  Text,
   View,
   FlatList,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
-import { ListItem } from 'native-base';
+import { ListItem, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { GoogleSignin } from 'react-native-google-signin';
 import PropTypes from 'prop-types';
 import { getSources } from '../actions/sources';
 import Header from './Header';
+import Loader from './Loader';
 
 const resetActionLogin = NavigationActions.reset({
   index: 0,
@@ -51,13 +51,20 @@ class SourcesScreen extends Component {
   );
 
   render() {
+    if (this.props.isLoading) {
+      return <Loader />;
+    }
     return (
-      <View style={{ backgroundColor: 'white' }}>
-        <FlatList
-          data={this.props.sources}
-          renderItem={this.renderItem}
-          keyExtractor={this.keyExtractor}
-        />
+      <View style={{ backgroundColor: 'white', flex: 1 }}>
+        { this.props.errorMessage ?
+          <Text>{this.props.errorMessage}</Text>
+         :
+          <FlatList
+            data={this.props.sources}
+            renderItem={this.renderItem}
+            keyExtractor={this.keyExtractor}
+          />
+         }
       </View>
     );
   }
@@ -70,7 +77,9 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 const mapStateToProps = state => ({
   category: state.categoryReducer.currentCategory,
-  sources: state.sourceReducer.sources
+  sources: state.sourceReducer.sources,
+  errorMessage: state.ajaxCallStatus.message,
+  isLoading: state.ajaxCallStatus.loading
 });
 
 SourcesScreen.propTypes = {

@@ -24,9 +24,12 @@ class CustomDrawer extends Component {
       actions: [
         NavigationActions.navigate({ routeName: 'Source', params: { category } }),
       ],
+      key: 'DrawerClose'
     });
     this.setState({ selected: category.name });
     this.props.navigation.dispatch(resetActionArticle);
+    // this.props.navigation.navigate('Source', { category });
+    console.log(this.props.navigation);
     this.props.changeCurrentCategory(category);
   }
   signOut = async () => {

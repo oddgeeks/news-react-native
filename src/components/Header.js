@@ -5,29 +5,31 @@ import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import { NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
 
-const AppHeader = ({
-  openDrawer, goBack, title, routeName
-}) => (
-  <Header androidStatusBarColor="#005662" style={{ backgroundColor: '#00838f' }}>
+const AppHeader = props => (
+  <Header
+    androidStatusBarColor="#005662"
+    searchBar={true}
+    style={{ backgroundColor: '#00838f' }}
+  >
     <Left>
       {
-        routeName === 'Source' ?
+        props.routeName === 'Source' ?
           (
-            <Button onPress={openDrawer} transparent>
+            <Button onPress={props.openDrawer} transparent>
               <Icon name="menu" />
             </Button>
           ) : (
-            <Button transparent onPress={goBack}>
+            <Button transparent onPress={props.goBack}>
               <Icon name="arrow-back" />
             </Button>
           )
       }
     </Left>
     <Body>
-      <Title>{title}</Title>
+      <Title>{props.title}</Title>
     </Body>
     <Right>
-      <Button transparent onPress={() => console.log('coming soon')}>
+      <Button transparent onPress={props.searchPress}>
         <Icon name="search" />
       </Button>
     </Right>
@@ -36,7 +38,8 @@ const AppHeader = ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   openDrawer: () => NavigationActions.navigate({ routeName: 'DrawerOpen' }),
-  goBack: () => NavigationActions.back()
+  goBack: () => NavigationActions.back(),
+  searchPress: () => NavigationActions.navigate({ routeName: 'ArticleSearchScreen' }),
 }, dispatch);
 
 const mapStateToProps = state => ({
@@ -48,11 +51,15 @@ AppHeader.defaultProps = {
   routeName: undefined
 };
 
+AppHeader.defaultProps = {
+  searchBar: false
+};
 AppHeader.propTypes = {
   openDrawer: PropTypes.func.isRequired,
   goBack: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  routeName: PropTypes.string
+  routeName: PropTypes.string,
+  searchBar: PropTypes.bool
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
 
