@@ -5,33 +5,37 @@ import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import { NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
 
-const AppHeader = props => (
+const AppHeader = ({
+  openDrawer, goBack, title, routeName, searchPress
+}) => (
   <Header
     androidStatusBarColor="#005662"
-    searchBar={true}
     style={{ backgroundColor: '#00838f' }}
   >
     <Left>
       {
-        props.routeName === 'Source' ?
+        routeName === 'Source' ?
           (
-            <Button onPress={props.openDrawer} transparent>
+            <Button onPress={openDrawer} transparent>
               <Icon name="menu" />
             </Button>
           ) : (
-            <Button transparent onPress={props.goBack}>
+            <Button transparent onPress={goBack}>
               <Icon name="arrow-back" />
             </Button>
           )
       }
     </Left>
     <Body>
-      <Title>{props.title}</Title>
+      <Title>{title}</Title>
     </Body>
     <Right>
-      <Button transparent onPress={props.searchPress}>
+      { routeName !== 'articleWebView' &&
+      <Button transparent onPress={searchPress}>
         <Icon name="search" />
       </Button>
+
+    }
     </Right>
   </Header>
 );
@@ -52,14 +56,14 @@ AppHeader.defaultProps = {
 };
 
 AppHeader.defaultProps = {
-  searchBar: false
+
 };
 AppHeader.propTypes = {
   openDrawer: PropTypes.func.isRequired,
   goBack: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   routeName: PropTypes.string,
-  searchBar: PropTypes.bool
+  searchPress: PropTypes.func.isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
 

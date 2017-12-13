@@ -5,6 +5,7 @@ import categoryReducer from './categories';
 import nav from './nav';
 import ajaxCallStatus from './ajaxCallStatus';
 import authReducer from './auth';
+import searchArticleReducer from './SearchArticles';
 
 const rootReducer = combineReducers({
   sourceReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   categoryReducer,
   authReducer,
   ajaxCallStatus,
-  nav
+  nav,
+  searchArticleReducer
 });
 
 export default rootReducer;

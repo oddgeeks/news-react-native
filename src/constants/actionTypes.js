@@ -9,6 +9,10 @@ const actionTypes = keyMirror({
   SET_CURRENT_USER: null,
   BEGIN_AJAX_CALL: null,
   RESET_ERROR_MESSAGE: null,
+  SEARCH_ARTICLES_SUCCESS: null,
+  SEARCH_ARTICLES_FAILURE: null,
+  START_SEARCH_ARTICLES: null,
+  RESET_SEARCH_ARTICLES: null
 });
 
 export default actionTypes;

@@ -17,7 +17,7 @@ const getArticles = source => async (dispatch) => {
     const res = await axios.get(`https://newsapi.org/v2/top-headlines?apiKey=213327409d384371851777e7c7f78dfe&sources=${source}`);
     setTimeout(() => {
       dispatch(getArticlesSuccess(res.data.articles));
-    }, 5000);
+    }, 0);
   } catch (err) {
     dispatch(getArticlesFailure(`Failed to load articles from ${source}`));
   }

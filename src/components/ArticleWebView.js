@@ -5,7 +5,7 @@ import Header from './Header';
 
 class ArticleWebView extends Component {
   static navigationOptions = ({ navigation }) => ({
-    header: <Header title={navigation.state.params.title} />
+    header: <Header title={navigation.state.params.title} routeName="articleWebView" />
   });
   render() {
     const { navigation } = this.props;
