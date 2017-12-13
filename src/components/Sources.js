@@ -78,8 +78,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 const mapStateToProps = state => ({
   category: state.categoryReducer.currentCategory,
   sources: state.sourceReducer.sources,
-  errorMessage: state.ajaxCallStatus.message,
-  isLoading: state.ajaxCallStatus.loading
+  errorMessage: state.sourceReducer.errorMessage,
+  isLoading: state.sourceReducer.isLoading
 });
 
 SourcesScreen.propTypes = {
@@ -92,7 +92,9 @@ SourcesScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SourcesScreen);

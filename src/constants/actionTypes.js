@@ -7,12 +7,13 @@ const actionTypes = keyMirror({
   GET_ARTICLES_SUCCESS: null,
   CHANGE_CATEGORY: null,
   SET_CURRENT_USER: null,
-  BEGIN_AJAX_CALL: null,
   RESET_ERROR_MESSAGE: null,
   SEARCH_ARTICLES_SUCCESS: null,
   SEARCH_ARTICLES_FAILURE: null,
   START_SEARCH_ARTICLES: null,
-  RESET_SEARCH_ARTICLES: null
+  RESET_SEARCH_ARTICLES: null,
+  START_GET_SOURCES: null,
+  START_GET_ARTICLES: null,
 });
 
 export default actionTypes;

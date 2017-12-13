@@ -5,7 +5,6 @@ import { ListItem, Thumbnail, Body, Text } from 'native-base';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getArticles } from '../actions/articles';
-import { resetErrorMessage } from '../actions/ajaxCallStatus';
 import Header from './Header';
 import Loader from './Loader';
 
@@ -16,10 +15,6 @@ class ArticleScreen extends Component {
 
   componentWillMount() {
     this.props.getArticles(this.props.navigation.state.params.source);
-  }
-
-  componentWillUnmount() {
-    this.props.resetErrorMessage();
   }
 
   onArticlePressButton = (url, title) => {
@@ -67,14 +62,13 @@ class ArticleScreen extends Component {
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getArticles,
-  resetErrorMessage
+  getArticles
 }, dispatch);
 
 const mapStateToProps = state => ({
   articles: state.articleReducer.articles,
-  errorMessage: state.ajaxCallStatus.message,
-  isLoading: state.ajaxCallStatus.loading
+  errorMessage: state.articleReducer.errorMessage,
+  isLoading: state.articleReducer.isLoading
 });
 
 ArticleScreen.propTypes = {
@@ -87,7 +81,9 @@ ArticleScreen.propTypes = {
         source: PropTypes.string
       })
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired
 
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleScreen);

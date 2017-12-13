@@ -1,10 +1,8 @@
-import React from 'react';
 import { DrawerNavigator, StackNavigator, } from 'react-navigation';
 import SourcesScreen from './Sources';
 import ArticlesScreen from './Articles';
 import ArticleWebView from './ArticleWebView';
 import CustomDrawer from './Drawer';
-import Header from './Header';
 import ArticleSearchScreen from './ArticleSearch';
 
 const CategoryScreen = StackNavigator({

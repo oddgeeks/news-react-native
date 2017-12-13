@@ -3,7 +3,6 @@ import sourceReducer from './sources';
 import articleReducer from './articles';
 import categoryReducer from './categories';
 import nav from './nav';
-import ajaxCallStatus from './ajaxCallStatus';
 import authReducer from './auth';
 import searchArticleReducer from './SearchArticles';
 
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   articleReducer,
   categoryReducer,
   authReducer,
-  ajaxCallStatus,
   nav,
   searchArticleReducer
 });
