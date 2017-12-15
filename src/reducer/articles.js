@@ -8,7 +8,7 @@ const articlesReducer = (state = { articles: [], isLoading: false, errorMessage:
       };
     case actionTypes.START_GET_ARTICLES:
       return {
-        isLoading: true, errorMessage: '', sources: []
+        isLoading: true, errorMessage: '', articles: []
       };
     case actionTypes.GET_ARTICLES_FAILURE:
       return {

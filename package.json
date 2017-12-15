@@ -17,12 +17,12 @@
 		"react-native-vector-icons": "^4.4.2",
 		"react-navigation": "^1.0.0-beta.19",
 		"react-redux": "^5.0.6",
-		"redux": "^3.7.2",
-		"redux-immutable-state-invariant": "^2.1.0",
-		"redux-logger": "^3.0.6",
+		"redux": "^3.7.2",	
 		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
+		"redux-logger": "^3.0.6",
+		"redux-immutable-state-invariant": "^2.1.0",
 		"babel-eslint": "^8.0.2",
 		"babel-jest": "21.2.0",
 		"babel-plugin-transform-decorators": "^6.24.1",

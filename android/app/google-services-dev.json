@@ -13,16 +13,16 @@
       },
       "oauth_client": [
         {
-          "client_id": "998422386529-540oijehau9spacqn461ns251b78uj51.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "998422386529-n8redr6h4i6p54ohq55n5chq9lqu2kda.apps.googleusercontent.com",
+          "client_id": "998422386529-5br8s4m4c9cc5ijv2b8se54o77j5g4a0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.newsfeed",
             "certificate_hash": "6ae46f6fcf87091fb5f70d94845b250debda8570"
           }
+        },
+        {
+          "client_id": "998422386529-540oijehau9spacqn461ns251b78uj51.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
