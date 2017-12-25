@@ -67,15 +67,12 @@ class CustomDrawer extends Component {
               name="person"
               style={styles.personIcon}
             />
-            <Text
-              style={styles.personName}
-            >
-              {this.props.user.name}
+            <Text style={styles.personName}>
+              Steven Nelson
             </Text>
           </View>
-          <Text
-            style={styles.category}
-          >CATEGORIES
+          <Text style={styles.category}>
+            CATEGORIES
           </Text>
           <FlatList
             data={this.props.categories}
@@ -83,9 +80,7 @@ class CustomDrawer extends Component {
             keyExtractor={this.keyExtractor}
             extraData={this.state}
           />
-          <View
-            style={styles.line}
-          />
+          <View style={styles.line} />
           <DrawerItem
             name="Sign Out"
             iconName="sign-out"

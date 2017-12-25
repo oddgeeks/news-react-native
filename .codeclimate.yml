@@ -4,6 +4,12 @@ engines:
     checks:
       import/extensions:
         enabled: false
+checks:
+  method-lines:
+    config:
+      threshold: 50
+  similar-code:
+    enabled: false
 
 ratings:
   paths:
